@@ -50,7 +50,7 @@ h1 {
   margin: 0 auto;
   padding: 0;
   position: relative;
-  font: bold 2em/1.2em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
+  font: bold 3em/1.2em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 .publish-date {
@@ -63,9 +63,11 @@ h1 {
   padding: 0;
   position: relative;
   color: #000;
-  font-family: Arial,sans-serif;
-  font-size: 1.125rem;
-  line-height: 2rem;
+  font-family: Sabon,Arial,sans-serif;
+  /*font-size: 1.125rem;
+  line-height: 2rem;*/
+  font-size: 18px;
+  line-height: 30px;
   display: block;
   margin: 0 auto 2rem auto;
   max-width: 100%;
