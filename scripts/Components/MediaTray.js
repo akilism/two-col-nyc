@@ -34,8 +34,8 @@ export default class MediaTray extends Component {
           mapElem = (this.props.locations) ? this.buildMap() : "&nbsp;";
 
     return (
-      <div ref="media" className="media" style={{width: this.props.open ? "99vw" : "50vw"}}>
-        <ArticleHeader headerClasses={headerClasses} media map={isMap} toggleMedia={this.props.toggleMedia} />
+      <div ref="media" className="media" style={{width: this.props.open ? "99vw" : "45vw"}}>
+        <ArticleHeader headerClasses={headerClasses} media map={isMap} toggleMedia={this.props.toggleMedia} title="The VICE Guide to New York City" byline="By VICE Travel Staff" />
         {images}
         {mapElem}
       </div>

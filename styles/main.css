@@ -27,6 +27,14 @@ a:active {
   font-family: "OpenSans";
 }
 
+.byline {
+  font-family: "OpenSans";
+}
+
+.nfo-box-content {
+  font-family: Sabon;
+}
+
 .headline {
   font-family: "TradeGothic-BoldCondTwenty";
 }
@@ -40,17 +48,29 @@ a:active {
 }
 
 .article {
-  width: 50vw;
+  width: 55vw;
   padding: 3vh 4vw;
 }
 
+h2 {
+  margin-bottom: 1.5em;
+  font: bold 1.75em/1em Sabon;
+}
+
+strong {
+  font-weight: bold;
+}
 
 h1 {
   width: 100%;
   margin: 0 auto;
   padding: 0;
   position: relative;
-  font: bold 3em/1.2em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
+  font: bold 3em/1em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.media-header h1 {
+  font: bold 3em/1em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 .publish-date {
@@ -63,7 +83,7 @@ h1 {
   padding: 0;
   position: relative;
   color: #000;
-  font-family: Sabon,Arial,sans-serif;
+  font-family: Sabon;
   /*font-size: 1.125rem;
   line-height: 2rem;*/
   font-size: 18px;
@@ -125,7 +145,7 @@ h1 {
 
 .media-header {
   transition: opacity 250ms ease-out;
-  padding: 0 4vw;
+  padding: 0 3vw;
   margin-bottom: 3vh;
   display: inline-block;
 }
