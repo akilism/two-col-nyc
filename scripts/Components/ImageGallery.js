@@ -37,7 +37,6 @@ export default class ImageGallery extends Component {
                           {caption}
                   </div>);
     } else {
-      console.log((activeIdx === idx), idx, activeIdx)
       classNames = (activeIdx === idx) ? "active-image media-image" : "media-image";
       component = (<img src={this.props.images[idx]} className={classNames} />);
     }

@@ -10,7 +10,7 @@ import InfoBox from "./InfoBox";
 import MediaTray from "./MediaTray";
 
 const galleryImages = requireAll(require.context('../../assets/gallery/', true, /.*/)),
-      imageData = [ { full: true, caption: "The Vice Guide to New York City", title: true },
+      imageData = [ { full: true, caption: "The Vice Guide to New York City", title: false },
         {},
         {annotations: [
             { text: "EAT SOME PIZZA YA FILTHY ANIMAL.",
@@ -175,7 +175,6 @@ export default class ReactRoot extends Component {
     } else {
       this.setState({ mediaType: type, mediaKey: key });
     }
-
   }
 
   showDetails(hash, pos) {
@@ -215,10 +214,11 @@ export default class ReactRoot extends Component {
         ref="root"
         className="react-root"
         style={{ height: this.state.measurements.contentHeight, width: this.state.measurements.viewportWidth }}>
-        <FullBleedIntro measurements={this.state.measurements}/>
+        <FullBleedIntro measurements={this.state.measurements} />
         <Article
           ref="article"
           setMedia={this.setMedia.bind(this)}
+          measurements={this.state.measurements}
           showDetails={this.showDetails.bind(this)} />
         <MediaTray
           toggleFullImage={this.toggleFullImage.bind(this)}

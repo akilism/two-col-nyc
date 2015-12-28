@@ -43,7 +43,7 @@ export default class ScanComponent extends Component {
 
   getValues(){
     var output = {},
-        adjustedPctScroll = this.scaler(this.props.measurements.pctScroll);
+        adjustedPctScroll = (this.props.measurements) ? this.scaler(this.props.measurements.pctScroll) : -1;
 
     _(this.transformations).each((t, k) => {
       output[k] = t.run({...this.props, adjustedPctScroll});
