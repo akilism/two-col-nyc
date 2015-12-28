@@ -169,7 +169,6 @@ export default class ReactRoot extends Component {
 
   setMedia(hash, additionalState) {
     let [type, key] = hash.split("#").slice(1);
-    console.log(type, key);
 
     if(additionalState) {
       this.setState({...additionalState, mediaType: type, mediaKey: key });

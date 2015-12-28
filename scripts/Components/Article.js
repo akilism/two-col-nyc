@@ -34,10 +34,8 @@ export default class Article extends ScanComponent {
   }
 
   render() {
+    const {topOffset, fixed} = this.getValues();
 
-    var {topOffset, fixed} = this.getValues();
-
-    console.log(this.getValues());
     return (
       <div ref="article" className="article" style={{top: `${topOffset}vh`, position: fixed ? "fixed" : "absolute"}}>
         <ArticleHeader headerClasses="article-header" title="The VICE Guide to New York City" byline="By VICE Travel Staff" />
