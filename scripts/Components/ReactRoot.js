@@ -120,7 +120,7 @@ export default class ReactRoot extends Component {
 
     this.setState({ measurements: {
       viewportHeight,
-      scrollTriggerPos: viewportHeight * 0.75,
+      scrollTriggerPos: viewportHeight * -0.5,
       viewportWidth,
       viewportTop: 0,
       contentHeight: 0,
