@@ -1,6 +1,6 @@
 import { default as React, Component } from "react";
 
-import grigoropoulos from "../../assets/grigoropoulos.jpg";
+import grigoropoulos from "../../assets/nyc0.jpg";
 
 export default class InfoBox extends Component {
   handleClick(evt) {

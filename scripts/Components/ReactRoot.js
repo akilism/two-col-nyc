@@ -9,12 +9,11 @@ import Article from "./Article";
 import InfoBox from "./InfoBox";
 import MediaTray from "./MediaTray";
 
-
-const galleryImages = requireAll(require.context('../../assets/', true, /.*/)),
-      imageData = [ {full: true},
+const galleryImages = requireAll(require.context('../../assets/gallery/', true, /.*/)),
+      imageData = [ { full: true, caption: "The Vice Guide to New York City", title: true },
         {},
         {annotations: [
-            { text: "TRANSLATION: TOTAL DENIAL OF CIVILIZATION FOR TOTAL LIBERATION OF ANIMALS",
+            { text: "EAT SOME PIZZA YA FILTHY ANIMAL.",
               position: {x:"32%",y:"32%",},
               type: "rect",
               dim: {w: "63%" } }
@@ -54,7 +53,7 @@ const galleryImages = requireAll(require.context('../../assets/', true, /.*/)),
         { key: "bellhouse",
           description: "The Bell House",
           type: "marker",
-          zoom: 1,
+          zoom: 16,
           position: { lat: 40.6737363, lng: -73.993868 }},
           { key: "secondchancesaloon",
           description: "Second Chance Saloon",
@@ -98,6 +97,7 @@ export default class ReactRoot extends Component {
     super(props);
     this.state = {
       open: false,
+      titleClose: false,
       mediaType: "image",
       mediaKey: 0,
       infoBox: false,
@@ -120,6 +120,7 @@ export default class ReactRoot extends Component {
 
     this.setState({ measurements: {
       viewportHeight,
+      scrollTriggerPos: viewportHeight * 0.75,
       viewportWidth,
       viewportTop: 0,
       contentHeight: 0,
@@ -137,7 +138,19 @@ export default class ReactRoot extends Component {
   _handleScroll(ev) {
     var {measurements} = this.calculateMeasurements(),
         pctScroll = measurements.pctScroll;
-    this.setState({ measurements, open: false });
+
+    let scrollBuddies = document.querySelectorAll("[data-scroll=true]");
+    let active = _.filter(scrollBuddies, (sb) => {
+      const dist = window.pageYOffset - (sb.offsetTop - this.state.measurements.scrollTriggerPos);
+      return dist > 0 && dist < 150;
+    });
+
+    if(active.length > 0) {
+      // console.log(active[0].getAttribute("data-scroll-action"));
+      this.setMedia(active[0].getAttribute("data-scroll-action"), { measurements, open: false, titleClose: true });
+    } else {
+      this.setState({ measurements, open: false, titleClose: true });
+    }
   }
 
   calculateMeasurements() {
@@ -153,9 +166,16 @@ export default class ReactRoot extends Component {
       pctScroll }};
   }
 
-  setMedia(hash) {
+  setMedia(hash, additionalState) {
     let [type, key] = hash.split("#").slice(1);
-    this.setState({ mediaType: type, mediaKey: key });
+    console.log(type, key);
+
+    if(additionalState) {
+      this.setState({...additionalState, mediaType: type, mediaKey: key });
+    } else {
+      this.setState({ mediaType: type, mediaKey: key });
+    }
+
   }
 
   showDetails(hash, pos) {
@@ -183,14 +203,37 @@ export default class ReactRoot extends Component {
     }
   }
 
+  toggleFullImage(isTitle) {
+    let newState = {open: !this.state.open};
+    if(isTitle) { newState.titleClose = true; }
+    this.setState(newState);
+  }
+
   render() {
     return (
-      <div ref="root" className="react-root" style={{ height: this.state.measurements.contentHeight,
-                                                      width: this.state.measurements.viewportWidth }}>
+      <div
+        ref="root"
+        className="react-root"
+        style={{ height: this.state.measurements.contentHeight, width: this.state.measurements.viewportWidth }}>
         <FullBleedIntro measurements={this.state.measurements}/>
-        <Article ref="article" setMedia={this.setMedia.bind(this)} showDetails={this.showDetails.bind(this)} measurements={this.state.measurements}/>
-        <MediaTray toggleMedia={this.toggleMedia.bind(this)} activeType={this.state.mediaType} activeKey={this.state.mediaKey} open={this.state.open} measurements={this.state.measurements} images={_.take(galleryImages,3)} imageData={imageData} locations={mapLocations} />
-        <InfoBox active={this.state.infoBox} rawPos={this.state.infoBoxRawPos} hideInfo={this.hideDetails.bind(this)} />
+        <Article
+          ref="article"
+          setMedia={this.setMedia.bind(this)}
+          showDetails={this.showDetails.bind(this)} />
+        <MediaTray
+          toggleFullImage={this.toggleFullImage.bind(this)}
+          toggleMedia={this.toggleMedia.bind(this)}
+          activeType={this.state.mediaType}
+          activeKey={this.state.mediaKey}
+          open={this.state.open}
+          measurements={this.state.measurements}
+          images={galleryImages}
+          imageData={imageData}
+          locations={mapLocations} />
+        <InfoBox
+          active={this.state.infoBox}
+          rawPos={this.state.infoBoxRawPos}
+          hideInfo={this.hideDetails.bind(this)} />
       </div>
     );
   }
