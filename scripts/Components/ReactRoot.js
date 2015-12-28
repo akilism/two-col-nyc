@@ -11,13 +11,14 @@ import MediaTray from "./MediaTray";
 
 const galleryImages = requireAll(require.context('../../assets/gallery/', true, /.*/)),
       imageData = [ { full: true, caption: "The Vice Guide to New York City", title: false },
-        {},
+        { full: true },
         {annotations: [
             { text: "EAT SOME PIZZA YA FILTHY ANIMAL.",
               position: {x:"32%",y:"32%",},
               type: "rect",
               dim: {w: "63%" } }
-        ]}],
+        ]},
+        { full: true }],
       mapLocations = [ { key: "exarcheia",
         description: "Exarcheia Neighborhood",
         zoom: 14,
