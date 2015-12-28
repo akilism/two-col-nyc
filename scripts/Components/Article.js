@@ -8,8 +8,8 @@ export default class Article extends ScanComponent {
 
   setupTransformations(){
     let topOffset = new Transformation(0, 0.05, (pct) => {
-                  return 100 - (pct * 100);
-                }, { pre: 100, post: 130});
+                  return 140 - (pct * 140);
+                }, { pre: 140, post: 130});
 
     let fixed = new Transformation(0,0.05, (pct) => {
         return true

@@ -22,8 +22,8 @@ export default class MediaTray extends ScanComponent {
 
   setupTransformations(){
     let topOffset = new Transformation(0, 0.05, (pct) => {
-                  return 3 + (100 - (pct * 100));
-                }, { pre: 103, post: 0});
+                  return 3 + (143 - (pct * 143));
+                }, { pre: 143, post: 0});
 
     return {
       topOffset

@@ -182,10 +182,37 @@ h1 {
     top:30vh;
     text-decoration:underline;
 }
-
-.full-image.active-image {
-    visibility: visible;
+.full-bleed .toc{
+    position:absolute;
+    top:103vh;
+    width:50%;
+    padding:5vh 0;;
+    left:25vw;
+    font-size:1.75vw;
+    line-height:2.75vw;
 }
+.full-bleed em{
+    font-weight:bold;
+}
+.full-bleed .toc-l{
+    position:absolute;
+    top:5vh;
+    left:0;
+    width:50%;
+}
+.full-bleed .toc-r{
+    position:absolute;
+    top:5vh;
+    right:0;
+    width:50%;
+}
+.full-bleed li{
+    cursor:pointer;
+}
+
+    .full-image.active-image {
+        visibility: visible;
+    }
 
 .full-opacity {
   opacity: 1;
