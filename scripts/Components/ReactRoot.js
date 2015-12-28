@@ -3,10 +3,12 @@ import _ from "lodash";
 import { default as requireAll } from "../lib/requireall";
 import { default as clamp } from "../lib/clamp";
 
+import FullBleedIntro from "./FullBleedIntro";
 import ArticleHeader from "./ArticleHeader";
 import Article from "./Article";
 import InfoBox from "./InfoBox";
 import MediaTray from "./MediaTray";
+
 
 const galleryImages = requireAll(require.context('../../assets/', true, /.*/)),
       imageData = [ {full: true},
@@ -185,7 +187,8 @@ export default class ReactRoot extends Component {
     return (
       <div ref="root" className="react-root" style={{ height: this.state.measurements.contentHeight,
                                                       width: this.state.measurements.viewportWidth }}>
-        <Article ref="article" setMedia={this.setMedia.bind(this)} showDetails={this.showDetails.bind(this)} />
+        <FullBleedIntro measurements={this.state.measurements}/>
+        <Article ref="article" setMedia={this.setMedia.bind(this)} showDetails={this.showDetails.bind(this)} measurements={this.state.measurements}/>
         <MediaTray toggleMedia={this.toggleMedia.bind(this)} activeType={this.state.mediaType} activeKey={this.state.mediaKey} open={this.state.open} measurements={this.state.measurements} images={_.take(galleryImages,3)} imageData={imageData} locations={mapLocations} />
         <InfoBox active={this.state.infoBox} rawPos={this.state.infoBoxRawPos} hideInfo={this.hideDetails.bind(this)} />
       </div>

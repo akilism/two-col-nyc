@@ -1,11 +1,15 @@
-import { default as React, Component } from "react";
+import { default as React, Component, } from "react";
+
 import _ from "lodash";
 
 import ArticleHeader from "./ArticleHeader";
 import ImageGallery from "./ImageGallery";
 import LocationMap from "./LocationMap";
 
-export default class MediaTray extends Component {
+import ScanComponent from "./Scan";
+import Transformation from "../lib/Transformation";
+
+export default class MediaTray extends ScanComponent {
   buildImages(activeIdx) {
     const classes = (this.props.activeType === "image") ? "media-images media-active media-wrapper" : "media-images media-wrapper no-pointer";
 
@@ -14,6 +18,16 @@ export default class MediaTray extends Component {
           <ImageGallery images={this.props.images} imageData={this.props.imageData}  activeIdx={activeIdx} />
       </div>
     );
+  }
+
+  setupTransformations(){
+    let topOffset = new Transformation(0, 0.05, (pct) => {
+                  return 3 + (100 - (pct * 100));
+                }, { pre: 103, post: 0});
+
+    return {
+      topOffset
+    };
   }
 
   buildMap() {
@@ -33,8 +47,10 @@ export default class MediaTray extends Component {
           images = (this.props.images) ? this.buildImages(idx) : "&nbsp;",
           mapElem = (this.props.locations) ? this.buildMap() : "&nbsp;";
 
+    var topOffset = this.getValues().topOffset;
+
     return (
-      <div ref="media" className="media" style={{width: this.props.open ? "99vw" : "45vw"}}>
+      <div ref="media" className="media" style={{width: this.props.open ? "99vw" : "45vw", top: `${topOffset}vh`}}>
         <ArticleHeader headerClasses={headerClasses} media map={isMap} toggleMedia={this.props.toggleMedia} title="The VICE Guide to New York City" byline="By VICE Travel Staff" />
         {images}
         {mapElem}

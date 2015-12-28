@@ -1,7 +1,25 @@
 import { default as React, Component } from "react";
 import ArticleHeader from "./ArticleHeader";
 
-export default class Article extends Component {
+import ScanComponent from "./Scan";
+import Transformation from "../lib/Transformation";
+
+export default class Article extends ScanComponent {
+
+  setupTransformations(){
+    let topOffset = new Transformation(0, 0.05, (pct) => {
+                  return 100 - (pct * 100);
+                }, { pre: 100, post: 130});
+
+    let fixed = new Transformation(0,0.05, (pct) => {
+        return true
+    }, {pre: true, post: false})
+
+    return {
+      topOffset,
+      fixed
+    };
+  }
 
   mediaLink(evt) {
     this.props.setMedia(evt.currentTarget.hash);
@@ -16,8 +34,12 @@ export default class Article extends Component {
   }
 
   render() {
+
+    var topOffset = this.getValues().topOffset,
+        fixed = this.getValues().fixed;
+
     return (
-      <div ref="article" className="article">
+      <div ref="article" className="article" style={{top: `${topOffset}vh`, position: fixed ? "fixed" : "absolute"}}>
         <ArticleHeader headerClasses="article-header" title="The VICE Guide to New York City" byline="By VICE Travel Staff" />
         <div className="article-body">
           <p>First there were dinosaurs; then a montage of gangsters eating spaghetti and stabbing stuff with "Gimme Shelter" playing in the background; then the Ramones and some breakdancing; all culminating in a gentrified paradise that smells like brunch and has countless ratchet ATMs that spit your money into the street.</p>
