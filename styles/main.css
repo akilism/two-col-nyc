@@ -223,8 +223,9 @@ h1 {
     right:0;
     width:50%;
 }
-.full-bleed li{
+.full-bleed li, .full-bleed a{
     cursor:pointer;
+    text-decoration:none;
 }
 
     .full-image.active-image {
