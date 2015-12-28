@@ -15,7 +15,7 @@ export default class MediaTray extends ScanComponent {
 
     return (
       <div className={classes} ref="images">
-          <ImageGallery images={this.props.images} imageData={this.props.imageData}  activeIdx={activeIdx} />
+          <ImageGallery images={this.props.images} imageData={this.props.imageData} toggleFullImage={this.props.toggleFullImage} activeIdx={activeIdx} />
       </div>
     );
   }
@@ -42,13 +42,12 @@ export default class MediaTray extends ScanComponent {
   render() {
     const { pctScroll } = this.props.measurements,
           isMap = (this.props.activeType === "map"),
-          idx = Math.floor(pctScroll * (this.props.images.length - 1)),
+          activeIdx = (this.props.activeType === "image") ? parseInt(this.props.activeKey, 10) : 0,
           headerClasses = (pctScroll > 0.1 || isMap) ? "media-header article-header full-opacity" : "media-header article-header zero-opacity",
-          images = (this.props.images) ? this.buildImages(idx) : "&nbsp;",
+          images = (this.props.images) ? this.buildImages(activeIdx) : "&nbsp;",
           mapElem = (this.props.locations) ? this.buildMap() : "&nbsp;";
 
     var topOffset = this.getValues().topOffset;
-
     return (
       <div ref="media" className="media" style={{width: this.props.open ? "99vw" : "45vw", top: `${topOffset}vh`}}>
         <ArticleHeader headerClasses={headerClasses} media map={isMap} toggleMedia={this.props.toggleMedia} title="The VICE Guide to New York City" byline="By VICE Travel Staff" />

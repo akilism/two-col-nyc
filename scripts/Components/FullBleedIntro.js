@@ -18,7 +18,7 @@ export default class FullBleedIntro extends ScanComponent {
   }
 
     render(){
-        var topOffset = this.getValues().topOffset
+        var topOffset = this.getValues().topOffset;
         return (
             <div className="full-bleed" style={{top: `${topOffset}vh`, backgroundImage: `url(${neon})`}}>
                 <h3 className="title">VICE GUIDE TO NEW YORK</h3>

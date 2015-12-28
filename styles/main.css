@@ -151,6 +151,10 @@ h1 {
   display: inline-block;
 }
 
+.media-image {
+  pointer-events: none;
+}
+
 .full-image {
     position: absolute;
     left: 0;
@@ -158,29 +162,42 @@ h1 {
     right: 0;
     bottom: 0;
     background-size: cover;
-    background-position: center;
+    background-position: center right;
     visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.full-bleed{
-    position:fixed;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    background-color:red;
-    background-size:cover;
+.media-image-caption-large {
+  text-align: center;
+  font-size: 5.5em;
+  color: #000;
+  width: 100vw;
+  cursor: pointer;
+  white-space: nowrap;
 }
-.full-bleed h3{
-    color:white;
+
+.full-bleed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    background-size: cover;
+}
+
+.full-bleed h3 {
+    color: white;
     font-family: "TradeGothic-BoldCondTwenty";
-    position:absolute;
-    font-size:15vw;
-    width:80vw;
-    text-align:center;
-    left:10vw;
-    top:30vh;
-    text-decoration:underline;
+    position: absolute;
+    font-size: 15vw;
+    width: 80vw;
+    text-align: center;
+    left: 10vw;
+    top: 30vh;
+    text-decoration: underline;
 }
 .full-bleed .toc{
     position:absolute;
