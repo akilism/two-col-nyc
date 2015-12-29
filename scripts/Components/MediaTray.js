@@ -4,6 +4,7 @@ import _ from "lodash";
 
 import ArticleHeader from "./ArticleHeader";
 import ImageGallery from "./ImageGallery";
+import GoogleGoogler from "./LocationMap";
 import LocationMap from "./LocationMap";
 
 import ScanComponent from "./Scan";
@@ -33,10 +34,12 @@ export default class MediaTray extends ScanComponent {
   buildMap() {
     const center = (this.props.activeType === "map") ? _.find(this.props.locations, { key: this.props.activeKey }) : this.props.locations[0],
           classes = (this.props.activeType === "map") ? "media-map media-active media-wrapper" : "media-map media-wrapper no-pointer";
+
     return (
       <div className={classes} ref="mediaMap">
         <LocationMap center={center} locations={this.props.locations} />
-      </div>);
+      </div>
+    );
   }
 
   render() {

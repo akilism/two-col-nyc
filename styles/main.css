@@ -107,11 +107,11 @@ h1 {
   width: 50vw;
   background-color: #000;
   height: 100vh;
+  /*padding: 3vh 0;*/
   position: fixed;
   top: 0;
   right: 0;
   color: #fff;
-  padding: 3vh 0;
   -webkit-transition: width 1s;
   transition: width 1s;
 }
@@ -148,7 +148,7 @@ h1 {
   transition: opacity 250ms ease-out;
   padding: 0 3vw;
   margin-bottom: 3vh;
-  display: inline-block;
+  display: none;
 }
 
 .media-image {
@@ -288,7 +288,7 @@ h1 {
 }
 
 .media-map {
-  height: 80%;
+  height: 100%;
 }
 
 .media-wrapper {
@@ -393,4 +393,17 @@ h1 {
 .nfo-close:hover {
   cursor: pointer;
   color: #cf0;
+}
+
+.place-tray {
+  position: fixed;
+  background: #fff;
+  color: #000;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  width: 45vw;
+  padding: 1.25em;
+  border: 1px solid black;
+  border-width: 0 0 1px 1px;
 }
