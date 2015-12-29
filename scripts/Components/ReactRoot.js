@@ -2,6 +2,7 @@ import { default as React, Component } from "react";
 import _ from "lodash";
 import { default as requireAll } from "../lib/requireall";
 import { default as clamp } from "../lib/clamp";
+import { placeFinder } from "../lib/placefinder";
 
 import FullBleedIntro from "./FullBleedIntro";
 import ArticleHeader from "./ArticleHeader";
@@ -13,12 +14,16 @@ const galleryImages = requireAll(require.context('../../assets/gallery/', true, 
       imageData = [ { full: true, caption: "The Vice Guide to New York City", title: false },
         { full: true },
         {annotations: [
-            { text: "EAT SOME PIZZA YA FILTHY ANIMAL.",
+            { text: "Not a New York Slice.",
               position: {x:"32%",y:"32%",},
               type: "rect",
               dim: {w: "63%" } }
         ]},
-        { full: true }],
+        { full: true },
+        {},
+        {},
+        {},
+        {}],
       mapLocations = [ { key: "exarcheia",
         description: "Exarcheia Neighborhood",
         zoom: 14,
@@ -45,51 +50,62 @@ const galleryImages = requireAll(require.context('../../assets/gallery/', true, 
           description: "The Studio Museum",
           type: "marker",
           zoom: 16,
+          placeId: "ChIJ_ShwXw32wokRQJpaKAIcCOo",
           position: { lat: 40.8084348, lng: -73.9498457 }},
         { key: "akashicbooks",
           description: "Akashic Books",
           type: "marker",
           zoom: 16,
+          placeId: "ChIJG31cO_9awokR2jh2SUZ3sgw",
           position: { lat: 40.6748632, lng: -73.9901155 }},
         { key: "bellhouse",
           description: "The Bell House",
           type: "marker",
           zoom: 16,
-          position: { lat: 40.6737363, lng: -73.993868 }},
+          placeId: "ChIJybXFCvlawokRoXw_e6VhLqI",
+          position: { lat: 40.6737363, lng: -73.993868 }
+        },
           { key: "secondchancesaloon",
           description: "Second Chance Saloon",
           type: "marker",
           zoom: 16,
+          placeId: "ChIJvQlHv1dZwokR0i_MOgzIk8g",
           position: { lat: 40.7115819, lng: -73.9482528 }},
           { key: "oldrabbitclub",
           description: "124 Old Rabbit Club",
           type: "marker",
           zoom: 16,
+          placeId: "ChIJsU0rhJFZwokRmUJmeDamSLo",
           position: { lat: 40.7298895, lng: -74.0023834 }},
           { key: "scratcher",
           description: "The Scratcher",
           type: "marker",
           zoom: 16,
+          placeId: "ChIJ4T3bPptZwokRxMTOwDwXsOw",
           position: { lat: 40.7276915, lng: -73.9926977 }},
           { key: "sidgold",
           description: "Sid Gold's",
           type: "marker",
           zoom: 16,
+          placeId: "ChIJz_NwRKVZwokRGp7XDpwqNnI",
           position: { lat: 40.7459733, lng: -73.9958193 }},
           { key: "anbealbochtcafe",
           description: "An Beal Bocht Café",
           type: "marker",
           zoom: 16,
+          placeId: "ChIJxTOdjLvzwokR5HWDbnyl2jw",
           position: { lat: 40.8874298, lng: -73.9071412 }},
           { key: "deadrabbit",
           description: "The Dead Rabbit",
           type: "marker",
           zoom: 16,
+          placeId: "ChIJIRiJaRRawokR2KyQ984qa-o",
           position: { lat: 40.7033, lng: -74.013228 }},
           { key: "dutchkills",
           description: "Dutch Kills",
           type: "marker",
           zoom: 16,
+          placeId: "ChIJwVwmQCpZwokRJdgjmkHMexA",
           position: { lat: 40.747773, lng: -73.942456 }}],
       infoBoxData = [{ key: "alexandros_grigoropoulos" }];
 
@@ -119,21 +135,44 @@ export default class ReactRoot extends Component {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    this.setState({ measurements: {
-      viewportHeight,
-      scrollTriggerPos: viewportHeight * -0.5,
-      viewportWidth,
-      viewportTop: 0,
-      contentHeight: 0,
-      pctScroll: 0 }
+    this.setState({ mapLocations: mapLocations,
+      measurements: {
+        viewportHeight,
+        scrollTriggerPos: viewportHeight * -0.5,
+        viewportWidth,
+        viewportTop: 0,
+        contentHeight: 0,
+        pctScroll: 0 } });
+  }
+
+  setPlaceInfo(places, mapLocations) {
+    return mapLocations.map((loc) => {
+      if(loc.placeId) {
+        return { ...loc, ...places.filter((plc) => { return plc.place_id === loc.placeId; })[0] };
+      }
+      return loc;
     });
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll.bind(this));
     window.Root = this;
+
     const { measurements } = this.calculateMeasurements();
-    this.setState({measurements});
+    let { mapLocations } = this.state;
+
+    Promise.all(this.state.mapLocations.filter((loc) => {
+      return loc.placeId;
+    }).map((plc) => {
+      return placeFinder.getPlaceInfo(this.refs["placeHolder"], plc.placeId);
+    })).then((places) => {
+      let newLocations = this.setPlaceInfo(places.map((plc) => {
+        delete plc.icon;
+        plc.position = {lat: plc.geometry.location.lat(), lng: plc.geometry.location.lng() };
+        return plc;
+      }), mapLocations);
+      this.setState({measurements, mapLocations: newLocations});
+    });
   }
 
   _handleScroll(ev) {
@@ -259,11 +298,12 @@ export default class ReactRoot extends Component {
           measurements={this.state.measurements}
           images={galleryImages}
           imageData={imageData}
-          locations={mapLocations} />
+          locations={this.state.mapLocations} />
         <InfoBox
           active={this.state.infoBox}
           rawPos={this.state.infoBoxRawPos}
           hideInfo={this.hideDetails.bind(this)} />
+        <div ref="placeHolder"></div>
       </div>
     );
   }
