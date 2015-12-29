@@ -10,7 +10,7 @@ export default class Article extends ScanComponent {
   setupTransformations(){
     let topOffset = new Transformation(0, 0.05, (pct) => {
                   return 140 - (pct * 140);
-                }, { pre: 140, post: 190});
+                }, { pre: 140, post: 175});
 
     let fixed = new Transformation(0,0.05, (pct) => {
         return true;
