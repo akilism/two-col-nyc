@@ -208,6 +208,37 @@ export default class ReactRoot extends Component {
     this.setState(newState);
   }
 
+  scrollTop(){
+    var doc = document.documentElement;
+    var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+    return top;
+  }
+
+  scrollToName(name){
+        var root_height = this.refs.root.offsetHeight,
+        intro_size = Intro.size * root_height,
+        root_top = this.refs.root.offsetTop,
+        selected_el = document.querySelectorAll(`[name=${name}]`)[0],
+        selected_top = selected_el.offsetTop,
+        current_top = this.scrollTop(),
+        dest = selected_top + intro_size - 80,
+        delta = (dest) - current_top,
+        tick = delta/15,
+        timer = 0;
+
+    var timerInt = setInterval(() => {
+        var current_top = this.scrollTop();
+        window.scrollTo(0,current_top + tick);
+        timer += 1;
+        if(timer > 14){
+          clearInterval(timerInt);
+          window.scrollTo(0,dest);
+        }
+    },33)
+    
+    console.log(root_height,root_top,selected_top)
+  }
+
   render() {
     return (
       <div
