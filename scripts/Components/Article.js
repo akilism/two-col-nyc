@@ -34,6 +34,7 @@ export default class Article extends ScanComponent {
   }
 
   render() {
+    const {topOffset, fixed} = this.getValues();
 
     var {topOffset, fixed} = this.getValues();
 

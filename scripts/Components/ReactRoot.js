@@ -11,13 +11,14 @@ import MediaTray from "./MediaTray";
 
 const galleryImages = requireAll(require.context('../../assets/gallery/', true, /.*/)),
       imageData = [ { full: true, caption: "The Vice Guide to New York City", title: false },
-        {},
+        { full: true },
         {annotations: [
             { text: "EAT SOME PIZZA YA FILTHY ANIMAL.",
               position: {x:"32%",y:"32%",},
               type: "rect",
               dim: {w: "63%" } }
-        ]}],
+        ]},
+        { full: true }],
       mapLocations = [ { key: "exarcheia",
         description: "Exarcheia Neighborhood",
         zoom: 14,
@@ -168,7 +169,6 @@ export default class ReactRoot extends Component {
 
   setMedia(hash, additionalState) {
     let [type, key] = hash.split("#").slice(1);
-    console.log(type, key);
 
     if(additionalState) {
       this.setState({...additionalState, mediaType: type, mediaKey: key });
