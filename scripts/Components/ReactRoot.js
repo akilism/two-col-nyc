@@ -233,10 +233,9 @@ export default class ReactRoot extends Component {
         if(timer > 14){
           clearInterval(timerInt);
           window.scrollTo(0,dest);
+          this._handleScroll();
         }
     },33)
-    
-    console.log(root_height,root_top,selected_top)
   }
 
   render() {
