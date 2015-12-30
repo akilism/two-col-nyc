@@ -76,6 +76,26 @@ h1 {
   font: bold 3em/1em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
+.map-link{
+    text-decoration:none;
+    border-radius: 3px;
+    border:1px solid #999;
+    padding: 5px 5px 3px;
+}
+.map-link:after{
+    content:"";
+    position:relative;
+    top:2px;
+    left:2px;
+    width:22px;
+    height:18px;
+    background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/420px-Globe_icon.svg.png');
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:50%;
+    display:inline-block;
+}
+
 .media-header h1 {
   font: bold 3em/1em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
 }
