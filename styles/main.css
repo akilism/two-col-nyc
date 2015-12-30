@@ -144,7 +144,7 @@ h1 {
 .toc-small{
     padding:20px;
     font-family: helvetica, arial;
-    line-height:26px; 
+    line-height:26px;
     color:black;
 }
 .toc-small a{
@@ -164,7 +164,7 @@ h1 {
 
 .media {
   width: 50vw;
-  background-color: #000;
+  background-color: #fff;
   height: 100vh;
   /*padding: 3vh 0;*/
   position: fixed;
