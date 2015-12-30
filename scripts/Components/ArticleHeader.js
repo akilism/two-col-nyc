@@ -21,7 +21,7 @@ export default class ArticleHeader extends Component {
     const toggles = (this.props.media) ? this.buildToggles(this.props.map) : "";
     return (
       <div className={this.props.headerClasses}>
-        <h1>{this.props.title}</h1>
+        <h1 dangerouslySetInnerHTML={{__html: this.props.title}}></h1>
 
         <div className="publish-date-time">
           <span className="publish-date" data-publish-date="2015-12-15" data-publish-date-format="MMMM D, YYYY">December 15, 2015</span>

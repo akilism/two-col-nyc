@@ -4,6 +4,7 @@ import ArticleHeader from "./ArticleHeader";
 import ScanComponent from "./Scan";
 import TOC from "./TOC";
 import Transformation from "../lib/Transformation";
+import night_out from "../../assets/night_out.png";
 
 export default class Article extends ScanComponent {
 
@@ -40,12 +41,13 @@ export default class Article extends ScanComponent {
     return (
       <div ref="article" className="article" style={{top: `${topOffset}vh`, position: fixed ? "fixed" : "absolute"}}>
         <TOC display={!fixed} />
-        <ArticleHeader headerClasses="article-header" title="The VICE Guide to New York City" byline="By VICE Travel Staff" />
+        <ArticleHeader headerClasses="article-header" title="The VICE Guide to<br/> New York City" byline="By VICE Travel Staff" />
         <div className="article-body">
           <p>First there were dinosaurs; then a montage of gangsters eating spaghetti and stabbing stuff with "Gimme Shelter" playing in the background; then the Ramones and some breakdancing; all culminating in a gentrified paradise that smells like brunch and has countless ratchet ATMs that spit your money into the street.</p>
           <p>The last point aside, as narratives for a city, you can do worse. There are apparently towns on this planet where hip-hop wasn't invented and Fania Records and Madball and Basquiat never existed.</p>
           <p>So, if you've just moved to New York or you're visiting, we'd like to help you. The following is what we would recommend to anyone willing to set cynicism aside and enjoy the capital city of planet Earth.</p>
           <p>It's also fucking huge, so this is not a definitive guide by any stretch, it's just a gussied up version of the email we send to people who visit from foreign VICE offices.</p>
+          <img width="100%" src={night_out} style={{marginBottom: "20px"}}/>
           <h2>To the Five Boroughs</h2>
           <p>New York City is compromised of five boroughs. Manhattan (from "Mannahata," after Native American names for the area), Staten Island (Staten Eylandt after the States General), The Bronx (named after Jonas Bronck), Brooklyn (Breukelen, the Dutch village in the Netherlands), and Queens (after Queen Catherine of Braganza, wife of King Charles II of England).</p>
           <p>Yes, we cut and pasted that from the <a href="http://www.nyhistory.org/community/borough-names" target="_blank">New York Historical Society</a>.</p>

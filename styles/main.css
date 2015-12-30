@@ -29,6 +29,7 @@ a:active {
 
 .byline {
   font-family: "OpenSans";
+  font-style:italic;
 }
 
 .nfo-box-content {
@@ -53,10 +54,10 @@ a:active {
   position:fixed;
 }
 .article-header{
-    padding: 0 4vw;
+    padding: 0 6vw;
 }
 .article-body{
-    padding: 0 4vw;
+    padding: 0 6vw;
 }
 
 h2 {
@@ -73,7 +74,7 @@ h1 {
   margin: 0 auto;
   padding: 0;
   position: relative;
-  font: bold 3em/1em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
+  font: bold 4em/1em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 .map-link{
@@ -152,6 +153,8 @@ h1 {
 
 .publish-date-time {
   font-size: 0.75em;
+  padding-bottom:5vh;
+  padding-top:3vh;
 }
 
 .byline span {
