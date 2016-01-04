@@ -87,11 +87,11 @@ h1 {
 .map-link:after{
     content:"";
     position:relative;
-    top:2px;
-    left:2px;
-    width:22px;
-    height:18px;
-    background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/420px-Globe_icon.svg.png');
+    top: 5px;
+    left: 2px;
+    width: 25px;
+    height: 25px;
+    background-image:url('https://i.ytimg.com/vi/PAKCgvprpQ8/maxresdefault.jpg');
     background-size:contain;
     background-repeat:no-repeat;
     background-position:50%;
