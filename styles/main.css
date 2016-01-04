@@ -53,9 +53,11 @@ a:active {
   padding: 7vh 0;
   position:fixed;
 }
+
 .article-header{
     padding: 0 6vw;
 }
+
 .article-body{
     padding: 0 6vw;
 }
@@ -77,25 +79,25 @@ h1 {
   font: bold 4em/1em "TradeGothic",Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
-.map-link{
-    text-decoration:none;
+.map-link {
+    text-decoration: none;
     border-radius: 3px;
-    border:1px solid #999;
+    border: 1px solid #999;
     padding: 5px 5px 3px;
 }
 
-.map-link:after{
+.map-link:after {
     content:"";
     position:relative;
     top: 5px;
     left: 2px;
     width: 25px;
     height: 25px;
-    background-image:url('https://i.ytimg.com/vi/PAKCgvprpQ8/maxresdefault.jpg');
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-position:50%;
-    display:inline-block;
+    background-image: url('https://i.ytimg.com/vi/PAKCgvprpQ8/maxresdefault.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    display: inline-block;
 }
 
 .media-header h1 {
@@ -103,9 +105,9 @@ h1 {
 }
 
 .publish-date {
-    font-weight: bold;
-    margin-right: 0.25rem;
-  }
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
 
 .article p {
   width: 100%;
@@ -122,40 +124,44 @@ h1 {
   max-width: 100%;
 }
 
-#toc-bar{
-    background-color:transparent;
-    width:55%;
-    height:50px;
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:100;
+#toc-bar {
+  background-color: transparent;
+  width: 55%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
-#toc-bar>img{
-    cursor:pointer;
-    width:26px;
-    margin:14px;
+
+#toc-bar > img {
+  cursor: pointer;
+  width: 26px;
+  margin: 14px;
 }
-#toc-menu{
-    position:fixed;
-    background-color:white;
-    left:5px;
-    top:50px;
+
+#toc-menu {
+  position: fixed;
+  background-color: white;
+  left: 5px;
+  top: 50px;
 }
-.toc-small{
-    padding:20px;
-    font-family: helvetica, arial;
-    line-height:26px;
-    color:black;
+
+.toc-small {
+  padding: 20px;
+  font-family: helvetica, arial;
+  line-height: 26px;
+  color: black;
 }
-.toc-small a{
-    text-decoration:none;
+
+.toc-small a {
+  text-decoration: none;
 }
 
 .publish-date-time {
   font-size: 0.75em;
-  padding-bottom:5vh;
-  padding-top:3vh;
+  padding-bottom: 5vh;
+  padding-top: 3vh;
 }
 
 .byline span {
@@ -178,31 +184,31 @@ h1 {
 }
 
 .opener {
-    height: 100%;
-    left: 0;
-    top: 0;
-    width: 3vw;
-    background-color: rgba(0,0,0,0.9);
-    position: absolute;
-    cursor: pointer;
-    opacity: 0.5;
-    z-index: 2;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 3vw;
+  background-color: rgba(0,0,0,0.9);
+  position: absolute;
+  cursor: pointer;
+  opacity: 0.5;
+  z-index: 2;
 }
 
 .opener:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .opener:before {
-    content: "◀";
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    font-size: 2vw;
+  content: "◀";
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  font-size: 2vw;
 }
 
 .opener.open:before {
-    content: "▶";
+  content: "▶";
 }
 
 .media-header {
@@ -217,17 +223,17 @@ h1 {
 }
 
 .full-image {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-size: cover;
-    background-position: center right;
-    visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center right;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .media-image-caption-large {
@@ -240,97 +246,103 @@ h1 {
 }
 
 .full-bleed {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    background-size: cover;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-size: cover;
 }
 
 .full-bleed h3 {
-    color: white;
-    font-family: "TradeGothic-BoldCondTwenty";
-    position: absolute;
-    font-size: 15vw;
-    width: 80vw;
-    text-align: center;
-    left: 10vw;
-    top: 30vh;
-    text-decoration: underline;
-}
-.full-bleed .toc{
-    position:absolute;
-    top:103vh;
-    width:50%;
-    padding:5vh 0;;
-    left:25vw;
-    font-size:1.75vw;
-    line-height:2.75vw;
-}
-.full-bleed em{
-    font-weight:bold;
-}
-.full-bleed .toc-l{
-    position:absolute;
-    top:5vh;
-    left:0;
-    width:50%;
-}
-.full-bleed .toc-r{
-    position:absolute;
-    top:5vh;
-    right:0;
-    width:50%;
-}
-.full-bleed li, .full-bleed a{
-    cursor:pointer;
-    text-decoration:none;
+  color: white;
+  font-family: "TradeGothic-BoldCondTwenty";
+  position: absolute;
+  font-size: 15vw;
+  width: 80vw;
+  text-align: center;
+  left: 10vw;
+  top: 30vh;
+  text-decoration: underline;
 }
 
-    .full-image.active-image {
-        visibility: visible;
-    }
+.full-bleed .toc {
+  position: absolute;
+  top: 103vh;
+  width: 50%;
+  padding: 5vh 0;;
+  left: 25vw;
+  font-size: 1.75vw;
+  line-height: 2.75vw;
+}
+
+.full-bleed em {
+  font-weight: bold;
+}
+
+.full-bleed .toc-l {
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  width: 50%;
+}
+
+.full-bleed .toc-r {
+  position: absolute;
+  top: 5vh;
+  right: 0;
+  width: 50%;
+}
+
+.full-bleed li,
+.full-bleed a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.full-image.active-image {
+  visibility: visible;
+}
 
 .full-opacity {
   opacity: 1;
 }
 
 .hover-dot {
-    color: black;
-    text-align: center;
-    font-family: "TradeGothic-BoldCondTwenty";
-    background-color: white;
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    font-size: 29px;
-    border: 2px solid black;
-    z-index: 2;
+  color: black;
+  text-align: center;
+  font-family: "TradeGothic-BoldCondTwenty";
+  background-color: white;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  font-size: 29px;
+  border: 2px solid black;
+  z-index: 2;
 }
 
 .hover-text {
-    color: black;
-    text-align: center;
-    font-family: "TradeGothic-BoldCondTwenty";
-    background-color: white;
-    position: absolute;
-    font-size: 27px;
-    border: 2px solid black;
-    margin-top: 32px;
-    margin-left: 32px;
-    padding: 10px 10px 3px 10px;
-    display: none;
+  color: black;
+  text-align: center;
+  font-family: "TradeGothic-BoldCondTwenty";
+  background-color: white;
+  position: absolute;
+  font-size: 27px;
+  border: 2px solid black;
+  margin-top: 32px;
+  margin-left: 32px;
+  padding: 10px 10px 3px 10px;
+  display: none;
 }
 
 .hover-dot:hover + .hover-text {
-    display: block;
+  display: block;
 }
 
 .hover-dot span {
-    position: relative;
-    top: 2px;
+  position: relative;
+  top: 2px;
 }
 
 .zero-opacity {
