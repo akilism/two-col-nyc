@@ -464,8 +464,8 @@ h1 {
   right: 0;
   z-index: 100;
   width: 45vw;
-  border: 1px solid black;
-  border-width: 0 0 1px 1px;
+  border: 0px solid black;
+  /*border-width: 0 0 1px 1px;*/
   display: flex;
   flex-wrap: wrap;
 }

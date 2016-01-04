@@ -20,7 +20,10 @@ class PlaceTray extends Component {
             <br />
             {city.short_name}, {state.short_name} {postalCode.short_name}
           </div>
-          <div className="place-extra-nfo"><a href={this.props.website} target="_blank">{this.props.website}</a></div>
+          <div className="place-extra-nfo">
+            <div className="place-sub-title">&nbsp;</div>
+            <a href={this.props.website} target="_blank">{this.props.website}</a>
+          </div>
         </div>
       </div>
     );
