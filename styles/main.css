@@ -83,6 +83,7 @@ h1 {
     border:1px solid #999;
     padding: 5px 5px 3px;
 }
+
 .map-link:after{
     content:"";
     position:relative;
@@ -463,7 +464,52 @@ h1 {
   right: 0;
   z-index: 100;
   width: 45vw;
-  padding: 1.25em;
   border: 1px solid black;
   border-width: 0 0 1px 1px;
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.place-sub-title {
+  font-size: 0.65rem;
+  color: #807E7E;
+  margin-bottom: 5px;
+}
+
+.place-image {
+/*  display: none;*/
+  width: 33%;
+}
+
+.place-details {
+  width: 66%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.place-name {
+  width: 100%;
+  padding: 15px 0 15px 5px;
+  background-color: #db4437;
+  color: #fff;
+  margin: 0;
+}
+
+.place-desc {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+.place-address {
+  width: 50%;
+  padding-left: 10px;
+  font-size: 0.85rem;
+}
+
+.place-extra-nfo {
+  width: 50%;
+  font-size: 0.85rem;
+}
+
