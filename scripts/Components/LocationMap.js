@@ -8,7 +8,6 @@ class PlaceTray extends Component {
   }
 
   render() {
-    console.log(this.props);
     const [houseNumber, street, city, state, country, postalCode] = this.props.address_components;
     return (
       <div ref="placeTray" className="place-tray">
