@@ -457,7 +457,8 @@ h1 {
 }
 
 .place-tray {
-  position: fixed;
+  /*position: fixed;*/
+  height: 40%;
   background: #fff;
   color: #000;
   top: 0;
@@ -513,3 +514,10 @@ h1 {
   font-size: 0.85rem;
 }
 
+.place-closey {
+  font-size: 2rem;
+  color: #fff;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}

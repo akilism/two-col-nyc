@@ -2,12 +2,17 @@ import { default as React, Component } from "react";
 import {GoogleMapLoader, GoogleMap, Marker, Polyline, Polygon} from "react-google-maps";
 
 class PlaceTray extends Component {
+
+  hideTray() {
+    this.refs["placeTray"].style.display = "none";
+  }
+
   render() {
     console.log(this.props);
     const [houseNumber, street, city, state, country, postalCode] = this.props.address_components;
     return (
-      <div className="place-tray">
-        <h2 className="place-name">{this.props.name}</h2>
+      <div ref="placeTray" className="place-tray">
+        <h2 className="place-name"><span onClick={this.hideTray.bind(this)} className="place-closey" dangerouslySetInnerHTML={{__html: "&ltrif;"}}></span>{this.props.name}</h2>
         <img src="https://lh5.googleusercontent.com/-DBIqtdy_ecM/VXvGy2r34UI/AAAAAAAAAAo/VSBV0JIJIHw/w408-k/=s408" className="place-image" />
         <div className="place-details">
           <div className="place-desc">
