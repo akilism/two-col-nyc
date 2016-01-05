@@ -23,8 +23,8 @@ export default class MediaTray extends ScanComponent {
 
   setupTransformations(){
     let topOffset = new Transformation(0, 0.05, (pct) => {
-                  return 3 + (143 - (pct * 143));
-                }, { pre: 143, post: 0});
+                  return 3 + (123 - (pct * 123));
+                }, { pre: 123, post: 0});
 
     return {
       topOffset
@@ -50,7 +50,15 @@ export default class MediaTray extends ScanComponent {
           images = (this.props.images) ? this.buildImages(activeIdx) : "&nbsp;",
           mapElem = (this.props.locations) ? this.buildMap() : "&nbsp;";
 
-    var topOffset = this.getValues().topOffset;
+    var bottom_target = 1 - (this.props.measurements.viewportHeight/this.props.measurements.contentHeight)
+
+    
+    if(this.props.measurements.pctScrollRaw >= 1){
+        var topOffset = (this.props.measurements.pctScrollRaw - 1) / 0.0243 * -100;
+    } else {
+        var topOffset = (1 - this.props.coordinations.intro) * 100;
+    }
+
     return (
       <div ref="media" className="media" style={{width: this.props.open ? "99vw" : "45vw", top: `${topOffset}vh`}}>
         <ArticleHeader headerClasses={headerClasses} media map={isMap} toggleMedia={this.props.toggleMedia} title="The VICE Guide to New York City" byline="By VICE Travel Staff" />

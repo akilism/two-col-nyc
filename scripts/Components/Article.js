@@ -10,8 +10,8 @@ export default class Article extends ScanComponent {
 
   setupTransformations(){
     let topOffset = new Transformation(0, 0.05, (pct) => {
-                  return 140 - (pct * 140);
-                }, { pre: 140, post: 175});
+                  return 100 - (pct * 100);
+                }, { pre: 100, post: 175});
 
     let fixed = new Transformation(0,0.05, (pct) => {
         return true;
@@ -36,11 +36,18 @@ export default class Article extends ScanComponent {
   }
 
   render() {
-    const {topOffset, fixed} = this.getValues();
+    if(this.props.coordinations.fixed){
+        var top_offset = (1-this.props.coordinations.intro) * 100;
+        var units = "vh"
+    } else {
+        var top_offset = this.props.measurements.contentHeight * 0.05;
+        var units = "px"
+    }
 
     return (
-      <div ref="article" className="article" style={{top: `${topOffset}vh`, position: fixed ? "fixed" : "absolute"}}>
-        <TOC display={!fixed} />
+
+      <div ref="article" className="article" style={{top: `${top_offset}${units}`, position: this.props.coordinations.fixed ? "fixed": "absolute", marginBottom: `${this.props.measurements.viewportHeight}px`}}>
+        <TOC display={! this.props.coordinations.fixed} />
         <ArticleHeader headerClasses="article-header" title="The VICE Guide to<br/> New York City" byline="By VICE Travel Staff" />
         <div className="article-body">
           <p>First there were dinosaurs; then a montage of gangsters eating spaghetti and stabbing stuff with "Gimme Shelter" playing in the background; then the Ramones and some breakdancing; all culminating in a gentrified paradise that smells like brunch and has countless ratchet ATMs that spit your money into the street.</p>

@@ -41,12 +41,17 @@ export default class ScanComponent extends Component {
     return (this.props.actCard) ? pct > -0.1 && pct <= 1.1 : this.props.shouldUpdate;
   }
 
+  measurements(){
+    return this.props.measurements || this.state.measurements;
+  }
+
   getValues(){
     var output = {},
-        adjustedPctScroll = (this.props.measurements) ? this.scaler(this.props.measurements.pctScroll) : -1;
+        measurements = this.measurements(),
+        adjustedPctScroll = measurements ? this.scaler(measurements.pctScroll) : -1;
 
     _(this.transformations).each((t, k) => {
-      output[k] = t.run({...this.props, adjustedPctScroll});
+      output[k] = t.run({measurements, adjustedPctScroll});
     });
     return output;
   }

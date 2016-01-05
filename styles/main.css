@@ -52,6 +52,7 @@ a:active {
   width: 55vw;
   padding: 7vh 0;
   position:fixed;
+  background-color:white;
 }
 .article-header{
     padding: 0 6vw;
@@ -169,6 +170,8 @@ h1 {
   /*padding: 3vh 0;*/
   position: fixed;
   top: 0;
+  bottom:0;
+  overflow:hidden;
   right: 0;
   color: #fff;
   -webkit-transition: width 1s;
@@ -222,6 +225,7 @@ h1 {
     right: 0;
     bottom: 0;
     background-size: cover;
+    height:100%;
     background-position: center right;
     visibility: hidden;
     display: flex;
@@ -340,7 +344,6 @@ h1 {
   position: absolute;
   opacity: 0;
   transition: opacity 250ms ease-in;
-  width: 100%;
 }
 
 .active-image {

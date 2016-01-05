@@ -9,6 +9,12 @@ import ArticleHeader from "./ArticleHeader";
 import Article from "./Article";
 import InfoBox from "./InfoBox";
 import MediaTray from "./MediaTray";
+import Outro from "./Outro";
+
+import ScanComponent from "./Scan";
+import Transformation from "../lib/Transformation";
+
+import map from "../../assets/map.png"
 
 const galleryImages = requireAll(require.context('../../assets/gallery/', true, /.*/)),
       imageData = [ { full: true, caption: "The Vice Guide to New York City", title: false },
@@ -109,7 +115,7 @@ const galleryImages = requireAll(require.context('../../assets/gallery/', true, 
           position: { lat: 40.747773, lng: -73.942456 }}],
       infoBoxData = [{ key: "alexandros_grigoropoulos" }];
 
-export default class ReactRoot extends Component {
+export default class ReactRoot extends ScanComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -129,6 +135,22 @@ export default class ReactRoot extends Component {
     }
     this.start = null;
     this.handleScroll = _.throttle(this._handleScroll, 16);
+  }
+
+  setupTransformations(){
+    let intro = new Transformation(0, 0.05, (pct) => {
+                  return pct
+                }, { pre: 0, post: 1});
+
+    let fixed = new Transformation(0,0.05, (pct) => {
+        return true;
+    }, {pre: true, post: false});
+
+
+    return {
+      intro,
+      fixed
+    };
   }
 
   componentWillMount() {
@@ -197,13 +219,15 @@ export default class ReactRoot extends Component {
     const viewportTop = window.pageYOffset;
     const {measurements} = this.state;
     const {viewportHeight} = measurements;
-    const contentHeight = (measurements.contentHeight === 0) ? this.refs.article.refs.article.clientHeight : measurements.contentHeight;
+    const contentHeight = (measurements.contentHeight === 0) ? (this.refs.article.refs.article.clientHeight * 1.0757) : measurements.contentHeight;
     const pctScroll = clamp(viewportTop / (contentHeight - viewportHeight), 0, 1);
+    const pctScrollRaw = viewportTop / (contentHeight - viewportHeight);
     return { measurements: {
       ...measurements,
       contentHeight,
       viewportTop,
-      pctScroll }};
+      pctScroll,
+      pctScrollRaw}};
   }
 
   setMedia(hash, additionalState) {
@@ -278,18 +302,24 @@ export default class ReactRoot extends Component {
   }
 
   render() {
+
+    var vals = this.getValues();
+
     return (
       <div
         ref="root"
         className="react-root"
         style={{ height: this.state.measurements.contentHeight, width: this.state.measurements.viewportWidth }}>
-        <FullBleedIntro measurements={this.state.measurements} />
+        <div style={{backgroundImage: `url(${map})`, backgroundSize: "cover", width: "100%", height: "100%", position: "fixed"}}></div>
+        <FullBleedIntro measurements={this.state.measurements} coordinations={vals} />
         <Article
           ref="article"
+          coordinations={vals}
           setMedia={this.setMedia.bind(this)}
           measurements={this.state.measurements}
           showDetails={this.showDetails.bind(this)} />
         <MediaTray
+          coordinations={vals}
           toggleFullImage={this.toggleFullImage.bind(this)}
           toggleMedia={this.toggleMedia.bind(this)}
           activeType={this.state.mediaType}
