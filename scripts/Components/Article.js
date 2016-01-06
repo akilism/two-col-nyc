@@ -6,6 +6,8 @@ import TOC from "./TOC";
 import Transformation from "../lib/Transformation";
 import night_out from "../../assets/night_out.png";
 
+import wk from "../../assets/wk.png";
+
 export default class Article extends ScanComponent {
 
   setupTransformations(){
@@ -24,7 +26,7 @@ export default class Article extends ScanComponent {
   }
 
   mediaLink(evt) {
-    this.props.setMedia(evt.currentTarget.hash);
+    this.props.setMedia(evt.currentTarget.hash || evt.currentTarget.attributes["data-hash"].value);
   }
 
   detailLink(evt) {
@@ -72,6 +74,10 @@ export default class Article extends ScanComponent {
           <p><strong>Tribeca<br /></strong>There are two major reasons to visit downtown. You should go to the Reflecting Absence World Trade Center Memorial. People argue about the aesthetic of the new tower. It's inarguably a product of political compromise and its architectural height of 1,776 feet is empire kitsch, but frankly how the hell are you ever going to put anything on that site which will please everyone? Frankly, it's not so bad. The clouds reflect off it beautifully and from certain angles it's a stunner. More importantly, the waterfall pool that serves as the site's actual memorial is something to be experienced. It works in the same way the Vietnam Memorial works; the names, it's all in the names.</p>
           <p>The other site to pay respect to is the African Burial Ground National Monument, just a short walk from Ground Zero. The burial ground is on the land of New York's first African-American cemetery. The site was discovered in 1992 when a federal building was being built and it was only through community activism that construction was halted. So go bow your head to both the tragedy of the initial injustice and in respect to one of the few times basic morality prevailed over real estate interests.</p>
           <p>Look, if you're just interested in New York for "fun," invest in a slip 'n' slide and stay the fuck home. New York is not an amusement park. It's a deep city with a deeper history and all the death and glory that entails.</p>
+          <div className="recommendation" data-hash="#rec#wk" onClick={this.mediaLink.bind(this)}>
+            <img className="rec-pic" src={wk}/>
+            <p className="rec-desc">Read about Andrew W.K.'s Midtown Manhattan recommandations →</p>
+          </div>
           <h2 name="Etiquette">Basic Etiquette</h2>
           <p>There is the grotesque stereotype of New Yorkers being unfriendly; rumor has it that you hold the door for a New Yorker, they will often say, "you must not be from New York." This is insane. ALL normal rules of etiquette hold true in New York. Pleases and thank yous and excuse mes, all of it. You just don't have to smile when you say all this. Nobody likes a phony. Just nod and be civil.</p>
           <p>If you get lost, don't be afraid to ask for directions. It may seem like New Yorkers walk at high speeds to avoid human contact, but they're not trying to be dicks. They've just got places to be. But here's a secret: Real New Yorkers LOVE giving directions. Don't be surprised if you stop someone to ask for help and three other people intervene with better routes. There's no greater pride than knowing the streets and subways inside out. Give the locals a chance to shine.</p>

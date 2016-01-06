@@ -535,3 +535,54 @@ h1 {
   top: 2px;
   cursor: pointer;
 }
+
+.recommendation{
+    border-top:1px solid #cecece;
+    border-bottom:1px solid #cecece;
+    margin-bottom:28px;
+    cursor:pointer;
+    position:relative;
+}
+.rec-pic{
+    width:33%;
+    padding-top:10px;
+}
+p.rec-desc{
+    width:66%;
+    display:inline-block;
+    position:absolute;
+    font-family: "TradeGothic-BoldCondTwenty";
+    text-transform: uppercase;
+    line-height:26px;
+    top:40%;
+}
+.rec-media{
+    width:100%;
+    height:100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.rec-media-inner{
+    width:100%;
+    height:100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.rec-media-title{
+    color: black;
+    padding: 10vh 2vw 5vh;
+    font-family: "TradeGothic-BoldCondTwenty";
+    text-transform: uppercase;
+    font-size:3vw;
+}
+.rec-media-body{
+    color: black;
+    padding: 5vh 2vw;
+    font-size:1.25vw;
+    font-family: Sabon;
+    line-height: 2vw;
+    background-color:#eee;
+    margin:0 2vw;
+}
